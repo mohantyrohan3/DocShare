@@ -1,19 +1,33 @@
 import mongoose from 'mongoose';
 
-const itemSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "Please provide a name"],
-        trim:true,
-        maxlength:[20, "Name cannot exceed 20 characters"]
+const fileSchema = new mongoose.Schema({
+    filename:{
+        type:String,
+        required:true
     },
-    downloadurl:{
-        type: String,
-        required: [true, "Please provide a download url"],
-        trim:true,
-        maxlength:[200, "Download url cannot exceed 200 characters"]
+    url:{
+        type:String,
+        required:true
+    },
+    filetype:{
+        type:String,
+        required:true
+    },
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    size :{
+        type:Number,
+        required:true
+    },
+    ref:{
+        type:String,
+        required:true
     }
-    
 });
-const Item = mongoose.model('Item', itemSchema);
-export default Item;
+
+
+const File = mongoose.model('File',fileSchema);
+
+export default File;
