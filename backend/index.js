@@ -1,7 +1,5 @@
 import  express from 'express';
 const port = 8000;
-
-
 import db from "./config/mongoose.js"
 import User from './models/user.js';
 import session from 'express-session';
