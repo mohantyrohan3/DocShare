@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import details from "./constants.js";
 
-mongoose.connect('mongodb://localhost:27017/doc_share_db',{
+mongoose.connect(`mongodb+srv://mohantyrohan3:${details.MONGO_PASSWORD}@docshare.0ulzzft.mongodb.net/doc_share_db?retryWrites=true&w=majority`,{
     family: 4 // Uses Ipv4
 });
 

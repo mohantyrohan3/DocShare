@@ -9,6 +9,13 @@ import router from './routes/index.js';
 const app = express()
 import cors from "cors"
 import path from "path"
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+import details from './config/constants.js';
+
+
+const __dirname = path.dirname(__filename);
+
 
 
 app.use(express.json());
@@ -31,8 +38,10 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge:1000 * 60 *60 * 24,  sameSite:'none',secure:true },
-    store: MongoStore.create({ mongoUrl: 'mongodb://0.0.0.0:27017/doc_share_db',collectionName:"sessions" })
+    store: MongoStore.create({ mongoUrl: `mongodb+srv://mohantyrohan3:${details.MONGO_PASSWORD}@docshare.0ulzzft.mongodb.net/doc_share_db?retryWrites=true&w=majority`,collectionName:"sessions" })
   }))
+
+
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -42,7 +51,15 @@ app.use(passport.session())
 
 
 // routes
-app.use('/api',router)
+app.use('/api',router);
+
+
+
+const rootPath = __dirname.substring(0, __dirname.length - 8);
+app.use(express.static(rootPath + '/frontend/build'));
+app.get('*', (req, res) => {
+  res.sendFile(rootPath + '/frontend/build/index.html');
+});
 
 
 

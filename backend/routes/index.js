@@ -4,7 +4,7 @@ import User from '../models/user.js';
 import { hashSync } from 'bcrypt'
 import passport from 'passport';
 import "../config/passport.js"
-import filerouter from "./file.js"
+// import filerouter from "./file.js"
 
 
 // Welcome Route
@@ -95,7 +95,7 @@ router.get('/details',(req,res)=>{
 
 
 
-router.use('/file',filerouter)
+// router.use('/file',filerouter)
 
 
 
