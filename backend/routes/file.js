@@ -65,6 +65,81 @@ router.post("/upload", upload.single(), async (req, res) => {
 
 
 
+// Get All File Details of the User Uploaded
+router.get('/get_files',async (req,res)=>{{
+    if(req.isAuthenticated()){
+        try{
+         const files = await File.find({user_id:req.user.id}).populate('user_id')
+         res.send({
+            files:files
+         })
+
+        }
+        catch(err){
+            res.send({
+                err:err
+            })
+        }
+    }
+
+    else{
+        res.send({
+            msg:'You are Not Autherized to view files'
+        })
+    }
+}})
+
+
+
+
+
+// Delete the User file from database as well as firebase
+router.post('/delete',async(req,res)=>{
+
+    if(req.isAuthenticated()){
+        try{
+            const deletedDocument = await File.findByIdAndDelete(req.body.fileid);
+            const desertRef = ref(storage, req.body.ref);
+            deleteObject(desertRef)
+            res.send({
+                msg:"Successfully Delete the file",
+                file:deletedDocument    
+            })
+        }
+
+        catch(err){
+            res.send({
+                err:err
+            })
+        }
+    }
+    else{
+        res.send({
+            msg:'You are Not Autherized to view files'
+        })
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
