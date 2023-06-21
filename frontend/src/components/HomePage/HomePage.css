@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
 .homepage-body{
     position: absolute;
     top: 0;
@@ -12,7 +14,7 @@
 
 .homepage-grid{
     position: absolute;
-    top: 30%;
+    top: 25%;
     /* border: 1px wheat solid;     */
 }
 
@@ -22,4 +24,16 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+
+.homepage-grid-card{    
+    background-color: inherit;
+    box-shadow: none;
+    width: 100%;
+}
+
+.homepage-grid-card-content{
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
 }
