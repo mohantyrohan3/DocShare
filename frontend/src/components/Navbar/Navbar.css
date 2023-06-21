@@ -4,7 +4,8 @@
 
 .navbar-body{
     /* height: 8vh; */
-    /* margin-top: 0.8rem; */
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
     color: white;
     /* margin-top: 1rem; */
     /* background: linear-gradient(270deg, #19522F 0%, rgba(56, 92, 70, 0) 100%) !important; */

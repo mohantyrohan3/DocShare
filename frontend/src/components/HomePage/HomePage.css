@@ -4,9 +4,11 @@
 
 .homepage-body{
     background: linear-gradient(243.18deg, #021C1D 0%, #132B2B 100%);
-    /* height: 94vh; */
     box-sizing: border-box;
     overflow:  auto;
+    height: 98vh;
+    width: auto;
+    position: relative;
 }
 
 
@@ -50,6 +52,24 @@
 }
 
 
-/* .homepage-footer{
+.homepage-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 
-} */
+
+@media only screen and (max-width: 300px) {
+    .homepage-footer{
+       bottom: 1;
+       margin-top: 10rem;
+       position: absolute;
+    }
+
+    .homepage-grid{
+        margin-top: 0.5rem;
+        margin-bottom: 5rem
+        /* border: 1px wheat solid;     */
+    }
+  }
+  
