@@ -22,7 +22,7 @@ export default function HomePage() {
         <Container className='homepage-grid' maxWidth="false">
             <Grid container  justifyContent={'space-around'}> 
 
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
                         <div className='homepage-grid-div'>
                         <Card sx={{ }} className='homepage-grid-card'>
                             <CardContent>
@@ -32,20 +32,19 @@ export default function HomePage() {
                                 <Typography className='homepage-grid-card-content' gutterBottom variant="h5" component="div">
                                 WITH FAMILY
                                 </Typography>
-                                <Typography className='homepage-grid-card-content' variant="body2" color="text.secondary">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000
-                                species, ranging across all continents except Antarctica
+                                <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content' variant="body2" color="text.secondary">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quisquam. Nisi eum, consectetur inventore minus fugiat velit rem accusamus quos. Quae alias accusamus, architecto quidem tempore vero atque quibusdam perspiciatis.
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button size="small">Share</Button>
+                                <Button disableFocusRipple  className='homepage-btn' size="medium">GET STARTED</Button>
                             </CardActions>
                             </Card>  
                         </div>
                     </Grid>
                     <Grid item xs={4}>
                         <div className='homepage-grid-div'>
-                        <Lottie animationData={animationData} loop={true} />;
+                        <Lottie style={{height:'100%'}} animationData={animationData} loop={true} />
                         </div>
                     </Grid>
 
