@@ -5,7 +5,7 @@ import "./Navbar.css"
 
 export default function Navbar() {
   return (
-    <>
+    <div className='navbar-body'>
         <Grid container spacing={2} alignItems={'center'}>
 
                 {/* SideBar */}
@@ -20,6 +20,6 @@ export default function Navbar() {
         </Grid>
     
     
-    </>
+    </div>
   )
 }
