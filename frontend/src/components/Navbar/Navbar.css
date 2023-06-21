@@ -3,10 +3,11 @@
 
 
 .navbar-body{
-    position: relative;
-    z-index: 20;
+    /* margin-top: 0.8rem; */
     color: white;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    /* background: linear-gradient(270deg, #19522F 0%, rgba(56, 92, 70, 0) 100%) !important; */
+    background: linear-gradient(269.74deg, #0A2828 1.04%, #133E3E 100%);
 }
 
 
