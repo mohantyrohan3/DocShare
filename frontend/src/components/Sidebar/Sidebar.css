@@ -39,3 +39,11 @@
     font-family: 'Montserrat', sans-serif !important;
     margin-bottom: 4rem !important;
   }
+
+
+
+  @media only screen and (max-width: 500px) {
+    .sidebar-content{
+      font-size: 1.3rem !important;
+    } 
+  }

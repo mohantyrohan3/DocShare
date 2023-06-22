@@ -12,13 +12,25 @@ import HomeFooter from '../HomeFooter/HomeFooter';
 import { Col, Row } from 'antd';
 import { TypeAnimation } from 'react-type-animation';
 import {motion} from "framer-motion"
+import Navbar from "../Navbar/Navbar"                     
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function HomePage() {
 
+    const navigate=useNavigate();
+
+    const handleclick = ()=>{
+        navigate("/login")
+    }
+
+
+
+
   return (
     <div className='homepage-body'>
-
+        <Navbar/>
 
         <Container className='homepage-grid' maxWidth="false">
             <Row  justify={'space-around'}> 
@@ -59,7 +71,7 @@ export default function HomePage() {
                                     </Typography>
                                 </CardContent>
                                 <CardActions sx={{display:'flex'}} className='btn-div'>
-                                    <Button disableFocusRipple  className='homepage-btn' size="medium">GET STARTED</Button>
+                                    <Button onClick={handleclick} disableFocusRipple  className='homepage-btn' size="medium">GET STARTED</Button>
                                 </CardActions>
                                 </Card>  
                         </motion.div>

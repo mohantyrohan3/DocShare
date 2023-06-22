@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import Navbar from "../components/Navbar/Navbar"
 import HomePage from '../components/HomePage/HomePage'
 import Loading from "../components/Loading/Loading"
 
@@ -32,7 +31,6 @@ useEffect(() => {
             ):
             (     
               <>
-                  <Navbar />
                  <HomePage/>
               </>
             )

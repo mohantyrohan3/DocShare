@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import Navbar from "../components/Navbar/Navbar"
 import Loading from "../components/Loading/Loading"
 import Register from '../components/Register/Register';
 

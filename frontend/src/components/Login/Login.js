@@ -8,9 +8,8 @@ import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
 import HttpsIcon from '@mui/icons-material/Https';
-import PersonIcon from '@mui/icons-material/Person';
 import Button from '@mui/material/Button';
-
+import {motion} from "framer-motion"
 
 
 
@@ -53,8 +52,17 @@ const Login = () => {
                 <br />
                 <br />
 
+                <motion.div
+                 initial={{y:100 , opacity:0}}
+                 animate={{y:0 , opacity:1}}
+                 transition={{delay:0.5,duration:0.75}}
+                >
 
-                <Grid container spacing={2} justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
+
+                
+                <Grid
+               
+                container spacing={2} justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
 
 
                     <Grid item xs={10}>
@@ -143,6 +151,7 @@ const Login = () => {
 
 
                 </Grid>
+                </motion.div>
             </div>
         
         
