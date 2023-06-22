@@ -3,6 +3,8 @@ import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import "./Navbar.css"
 import Sidebar from '../Sidebar/Sidebar';
+import {AnimatePresence} from "framer-motion";
+
 
 
 export default function Navbar() {
@@ -16,9 +18,11 @@ export default function Navbar() {
 
     <div className='navbar-body'>
 
+        <AnimatePresence>
         {
-      (sidebar)?(<Sidebar setsidebar={setsidebar}  />):<></>
+          sidebar && (<Sidebar setsidebar={setsidebar}  />)
         }
+        </AnimatePresence>
 
 
         <Grid container spacing={2} alignContent={'center'} >

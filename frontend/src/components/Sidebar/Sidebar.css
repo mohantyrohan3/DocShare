@@ -9,5 +9,12 @@
     opacity: 0.9;
     overflow-x: hidden;
     padding-top: 60px;
-    transition: 0.7s;
+    /* transition: 0.7s; */
+  }
+
+
+  .close-icon{
+    position: absolute;
+    right: 15px;
+    top: 15px;
   }
