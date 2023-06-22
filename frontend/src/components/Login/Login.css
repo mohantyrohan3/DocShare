@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+
+.login-body{
+    
+    background: linear-gradient(243.18deg, #021C1D 0%, #132B2B 100%);
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+
+
+.login-title{
+    font-size: 3rem !important;
+    font-family: 'Gamja Flower', cursive !important;
+}
+
+
+.div-card-outer-login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.login-input{
+    border-radius: 25px;
+    background: #3D5152;
+    box-shadow: 0px 0px 20px 5px rgba(53, 53, 53, 0.25);
+    height: 4rem !important;
+    color: white !important;
+}
+
+
+
+.input-card{
+    height:50vh;
+    border: 1px solid white;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+
+
+.login-input {
+
+    background-color: #3D5152;
+    width: 400px;
+}
+
+
+.btn-login-card{
+    background: #E1FFFF !important;
+    border-radius: 1rem !important;
+    font-family: 'Gamja Flower', cursive !important;
+    color: black !important;
+    font-size: 1.2rem !important;
+    margin-bottom: 1rem !important;
+    width: 60% !important;
+    margin-top: 2rem !important;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .register-title{
+        font-size: 2rem !important;
+    }
+  }
+
+
+  @media only screen and (max-width: 330px) {
+    .register-title{
+        font-size: 1.5rem !important;
+    }
+  }
+  
+  

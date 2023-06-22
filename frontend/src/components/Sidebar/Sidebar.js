@@ -34,7 +34,7 @@ export default function Sidebar(props) {
            <Link to='/'>HOME</Link> 
         </Typography>
         <Typography className='sidebar-content' gutterBottom>
-            LOGIN
+        <Link to='/login'> LOGIN</Link> 
         </Typography>
         <Typography className='sidebar-content' gutterBottom>
            <Link to='/register'> REGISTER</Link> 

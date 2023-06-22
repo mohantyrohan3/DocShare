@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Register.css'
+import './Login.css'
 import Navbar from '../Navbar/Navbar';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -23,7 +23,7 @@ import Button from '@mui/material/Button';
 
 
 
-const Register = () => {
+const Login = () => {
     const [inputs, setInputs] = useState({
         name: '',
         email: '',
@@ -47,7 +47,7 @@ const Register = () => {
     return (
         <> 
 
-            <div className='register-body'>
+            <div className='login-body'>
                 <Navbar/>
 
                 <br />
@@ -58,39 +58,14 @@ const Register = () => {
 
 
                     <Grid item xs={10}>
-                    <Typography sx={{color:'white', textAlign:'center'}} className='register-title'  gutterBottom>
-                        CREATE NEW ACCOUNT
+                    <Typography sx={{color:'white', textAlign:'center'}} className='login-title'  gutterBottom>
+                          HEY , WELCOME BACK
                     </Typography>
 
                     <Typography sx={{color:'white' , textAlign:'center'}}  gutterBottom>
-                    Already a Member , LOG IN
+                    DON'T HAVE AN ACCOUNT ,  SIGN IN
                     </Typography>
                     
-                    </Grid>
-
-                    <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-register'  justifyItems={'center'} >
-
-                    <div className='input-div-register'>
-                    <FormControl fullWidth > 
-                        <Input
-                        disableUnderline={true}
-                        fullWidth
-                        type='text'
-                        placeholder="Username"
-                        required={true}
-                        // value={email}
-                        className='register-input'
-                        // onChange={handleEmail}
-                        startAdornment={
-                        <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
-                            <PersonIcon/>
-                        </InputAdornment>
-                    }
-                    />
-                    </FormControl>
-                    </div>
-
-
                     </Grid>
 
 
@@ -103,9 +78,9 @@ const Register = () => {
 
     
 
-                    <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-register'  justifyItems={'center'} >
+                    <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-login'  justifyItems={'center'} >
 
-                        <div className='input-div-register'>
+                        <div className='input-div-login'>
                         <FormControl fullWidth > 
                             <Input
                             disableUnderline={true}
@@ -114,7 +89,7 @@ const Register = () => {
                             placeholder="Email"
                             required={true}
                             // value={email}
-                            className='register-input'
+                            className='login-input'
                             // onChange={handleEmail}
                             startAdornment={
                             <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
@@ -131,7 +106,7 @@ const Register = () => {
                         <Grid item  xs={11} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} justifyItems={'center'}>
                         
 
-                        <div className='input-div-register'>
+                        <div className='input-div-login'>
                         <FormControl fullWidth> 
                             <Input
                             disableUnderline={true}
@@ -140,7 +115,7 @@ const Register = () => {
                             placeholder="Password"
                             required={true}
                             // value={email}
-                            className='register-input'
+                            className='login-input'
                             // onChange={handleEmail}
                             startAdornment={
                                 <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
@@ -159,7 +134,7 @@ const Register = () => {
                         <Grid item xs={12} sm={7} md={6} lg={6} xl={12} justifyContent={'center'}>
 
                             <div style={{display:'flex', justifyContent:'center', width:'100%'}}>
-                         <Button size="medium" type='submit' className='btn-login-card' fullWidth sx={{width:'50%'}}>REGISTER HERE</Button>
+                         <Button size="medium" type='submit' className='btn-login-card' fullWidth sx={{width:'50%'}}>LOGIN</Button>
                             </div>
 
 
@@ -177,4 +152,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Login
