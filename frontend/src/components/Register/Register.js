@@ -11,6 +11,9 @@ import HttpsIcon from '@mui/icons-material/Https';
 import PersonIcon from '@mui/icons-material/Person';
 import Button from '@mui/material/Button';
 import {motion} from "framer-motion"
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -24,28 +27,58 @@ import {motion} from "framer-motion"
 
 
 const Register = () => {
-    const [inputs, setInputs] = useState({
-        name: '',
-        email: '',
-        password: '',
-    })
+
+    const navigate= useNavigate()
+    const [success, setsuccess] = useState(false);
+    const [email, setemail] = useState("");
+    const [username, setusername] = useState("");
+    const [password, setpassword] = useState("");
+
+
+    const handleClick = () => {
+    setsuccess(true);
+  };
+
+    const handleClose = (event) => {
+    setsuccess(false);
+  };
 
 
     //input change functions
-    const handleChange = (e) => {
-        setInputs(prevState => (
-            {
-                ...prevState,
-                [e.target.name]: e.target.value
-            }
-        ))
-    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(inputs)
+        const data = {
+            email:email,
+            username:username,
+            password:password
+        }
+
+        handleClick()
+        setemail("")
+        setpassword("")
+        setusername("")
+        console.log(data)
+        setTimeout(()=>{
+            navigate('/login')
+        },2000)
     }
     return (
         <> 
+
+
+        <Snackbar   Snackbar open={success} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%', backgroundColor:'rgb(56, 142, 60)' , color:'white'}}>
+          You Have Successfully Registered !!
+        </Alert>
+        </Snackbar>
+
+
+
+
+
+
 
             <div className='register-body'>
                 <Navbar/>
@@ -58,6 +91,7 @@ const Register = () => {
                  animate={{y:0 , opacity:1}}
                  transition={{delay:0.5,duration:0.75}}
                 >
+                    <form onSubmit={handleSubmit}>
                 <Grid container spacing={2} justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
 
 
@@ -72,6 +106,7 @@ const Register = () => {
                     
                     </Grid>
 
+
                     <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-register'  justifyItems={'center'} >
 
                     <div className='input-div-register'>
@@ -82,9 +117,9 @@ const Register = () => {
                         type='text'
                         placeholder="Username"
                         required={true}
-                        // value={email}
+                        value={username}
                         className='register-input'
-                        // onChange={handleEmail}
+                        onChange={(e)=> setusername(e.target.value)}
                         startAdornment={
                         <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
                             <PersonIcon/>
@@ -117,9 +152,9 @@ const Register = () => {
                             type='email'
                             placeholder="Email"
                             required={true}
-                            // value={email}
+                            value={email}
                             className='register-input'
-                            // onChange={handleEmail}
+                            onChange={(e)=> setemail(e.target.value)}
                             startAdornment={
                             <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
                                 <EmailIcon/>
@@ -143,9 +178,9 @@ const Register = () => {
                             type='password'
                             placeholder="Password"
                             required={true}
-                            // value={email}
+                            value={password}
                             className='register-input'
-                            // onChange={handleEmail}
+                            onChange={(e)=> setpassword(e.target.value)}
                             startAdornment={
                                 <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
                                 <HttpsIcon/>
@@ -169,10 +204,12 @@ const Register = () => {
 
 
                         </Grid>
+                    
 
 
                 </Grid>
 
+                        </form>
                 </motion.div>
             </div>
         

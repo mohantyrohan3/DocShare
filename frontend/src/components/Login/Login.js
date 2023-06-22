@@ -10,8 +10,12 @@ import EmailIcon from '@mui/icons-material/Email';
 import HttpsIcon from '@mui/icons-material/Https';
 import Button from '@mui/material/Button';
 import {motion} from "framer-motion"
-
-
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import { useNavigate } from 'react-router-dom';
+import { loginApi } from '../../api/loginapi';
+import {useDispatch } from 'react-redux'
+import { addStatus } from '../../store/slices/userSlice';
 
 
 
@@ -23,28 +27,63 @@ import {motion} from "framer-motion"
 
 
 const Login = () => {
-    const [inputs, setInputs] = useState({
-        name: '',
-        email: '',
-        password: '',
-    })
+
+    const dispatch = useDispatch();
+    const navigate=useNavigate()
+    // const user = useSelector((state)=> state.user)
 
 
-    //input change functions
-    const handleChange = (e) => {
-        setInputs(prevState => (
-            {
-                ...prevState,
-                [e.target.name]: e.target.value
-            }
-        ))
-    }
-    const handleSubmit = (e) => {
+    const [success, setsuccess] = useState(false);
+    const [failure, setfailure] = useState(false);
+
+    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("");
+
+
+
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(inputs)
+        const data = {
+            email:email,
+            password:password
+        }
+        try{
+            const response = await loginApi(data)
+            if(response.data.msg === "Failed to Log In"){
+                setfailure(true)
+            }
+            else{
+                dispatch(addStatus(email))
+                navigate('/user/home')
+            }
+        }
+
+        catch(err){
+            console.log(err)
+        }
+        setemail("")
+        setpassword("")
     }
     return (
         <> 
+            
+            <Snackbar   Snackbar open={success} autoHideDuration={2000} onClose={()=> setsuccess(false)}>
+            <Alert onClose={()=> setsuccess(false)} severity="success" sx={{ width: '100%', backgroundColor:'rgb(56, 142, 60)' , color:'white'}}>
+            You Have Successfully Logged In !!
+            </Alert>
+            </Snackbar>
+
+
+            
+            <Snackbar   Snackbar open={failure} autoHideDuration={2000} onClose={()=> setfailure(false)}>
+            <Alert onClose={()=> setfailure(false)}  severity="warning"  sx={{ width: '100%', backgroundColor:'rgb(211, 47, 47)' , color:'white'}}>
+            Incorrect Username/ Password
+            </Alert>
+            </Snackbar>
+
+
 
             <div className='login-body'>
                 <Navbar/>
@@ -59,7 +98,7 @@ const Login = () => {
                 >
 
 
-                
+                <form onSubmit={handleSubmit}>
                 <Grid
                
                 container spacing={2} justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
@@ -96,9 +135,9 @@ const Login = () => {
                             type='email'
                             placeholder="Email"
                             required={true}
-                            // value={email}
+                            value={email}
                             className='login-input'
-                            // onChange={handleEmail}
+                            onChange={(e)=> setemail(e.target.value)}
                             startAdornment={
                             <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
                                 <EmailIcon/>
@@ -122,9 +161,9 @@ const Login = () => {
                             type='password'
                             placeholder="Password"
                             required={true}
-                            // value={email}
+                            value={password}
                             className='login-input'
-                            // onChange={handleEmail}
+                            onChange={(e)=> setpassword(e.target.value)}
                             startAdornment={
                                 <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
                                 <HttpsIcon/>
@@ -151,6 +190,7 @@ const Login = () => {
 
 
                 </Grid>
+                </form>
                 </motion.div>
             </div>
         
