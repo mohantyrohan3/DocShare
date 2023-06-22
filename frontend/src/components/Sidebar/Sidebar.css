@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
 .sidebar {
     height: 100vh;
     width: 100vw;
@@ -17,4 +19,22 @@
     position: absolute;
     right: 15px;
     top: 15px;
+  }
+
+
+
+  .sidebar-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+
+
+  .sidebar-content{
+    font-size: 2rem !important;
+    /* font-family: 'Gamja Flower', cursive !important; */
+    margin-bottom: 4rem !important;
   }
