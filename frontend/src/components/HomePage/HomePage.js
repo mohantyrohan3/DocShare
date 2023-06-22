@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import HomeFooter from '../HomeFooter/HomeFooter';
 import { Col, Row } from 'antd';
 import { TypeAnimation } from 'react-type-animation';
-
+import {motion} from "framer-motion"
 
 
 export default function HomePage() {
@@ -25,7 +25,11 @@ export default function HomePage() {
 
                     <Col  xs={24} sm={24} md={10} lg={8} xl={8}>
                         
-                        <div className='homepage-grid-div'>
+                        <motion.div className='homepage-grid-div'
+                            initial={{y:100,opacity:0}}
+                            animate={{y:0,opacity:1}}
+                            transition={{duration:0.75}}
+                        >
                             <Card className='homepage-grid-card' sx={{marginTop:'4rem'}}>
                                 <CardContent>
                                     <Typography className='homepage-grid-card-content card-title' gutterBottom  component="div">
@@ -50,20 +54,24 @@ export default function HomePage() {
                                             repeat={Infinity}
                                         />
                                     </Typography>
-                                    <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content' variant="body2" color="text.secondary">
+                                    <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content content-desc' variant="body2" color="text.secondary">
                                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quisquam. Nisi eum, consectetur inventore minus fugiat velit rem accusamus quos. Quae alias accusamus, architecto quidem tempore vero atque quibusdam perspiciatis.
                                     </Typography>
                                 </CardContent>
-                                <CardActions>
+                                <CardActions sx={{display:'flex'}} className='btn-div'>
                                     <Button disableFocusRipple  className='homepage-btn' size="medium">GET STARTED</Button>
                                 </CardActions>
                                 </Card>  
-                        </div>
+                        </motion.div>
                     </Col>
                     <Col xs={0} sm={0} md={10} lg={12} xl={12}>
-                        <div className='homepage-grid-div'>
-                        <Lottie  animationData={animationData} loop={true} />
-                        </div>
+                        <motion.div 
+                        initial={{y:100,opacity:0}}
+                        animate={{y:0,opacity:1}}
+                        transition={{duration:0.75}}
+                        className='homepage-grid-div'>
+                        <Lottie  animationData={animationData} loop={false} />
+                        </motion.div>
                     </Col>
 
 
