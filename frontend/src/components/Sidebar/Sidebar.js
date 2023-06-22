@@ -37,7 +37,7 @@ export default function Sidebar(props) {
             LOGIN
         </Typography>
         <Typography className='sidebar-content' gutterBottom>
-            REGISTER
+           <Link to='/register'> REGISTER</Link> 
         </Typography>
         </motion.div>
 

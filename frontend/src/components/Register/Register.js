@@ -1,6 +1,27 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Button, Link, FormControl, Input } from '@mui/material'
 import './Register.css'
+import Navbar from '../Navbar/Navbar';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/Input';
+import InputAdornment from '@mui/material/InputAdornment';
+import EmailIcon from '@mui/icons-material/Email';
+import HttpsIcon from '@mui/icons-material/Https';
+import PersonIcon from '@mui/icons-material/Person';
+import Button from '@mui/material/Button';
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Register = () => {
     const [inputs, setInputs] = useState({
@@ -8,6 +29,8 @@ const Register = () => {
         email: '',
         password: '',
     })
+
+
     //input change functions
     const handleChange = (e) => {
         setInputs(prevState => (
@@ -22,100 +45,135 @@ const Register = () => {
         console.log(inputs)
     }
     return (
-        <div className='register-body'>
-            <Grid justifyItems="center" alignItems="center" sx={{ textAlign: 'center' }} >
-                <Typography variant="h4">
-                    CREATE A NEW ACCOUNT
-                </Typography>
-                <Typography variant="h6">
-                    ALREADY A MEMBER , <Link href="#" color="inherit" underline="none">LOG IN</Link>
-                </Typography>
+        <> 
 
-                <Grid
-                    container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    sx={{ minHeight: '100vh' }}
-                >
-                    <Grid item xs={3}>
-                        <form onSubmit={handleSubmit}>
+            <div className='register-body'>
+                <Navbar/>
 
-                            <FormControl fullWidth error >
-                                <Input
-                                    type='text'
-                                    placeholder="Username"
-                                    required={true}
-                                    disableUnderline={true}
-                                    value={inputs.name}
-                                    onChange={handleChange}
-                                    sx={{
-                                        borderRadius: 2,
-                                        margin: '15px',
-                                        height: '50px'
-                                    }}
-                                    className='register-input' />
+                <br />
+                <br />
 
-                                <br />
 
-                                <Input
-                                    type='email'
-                                    placeholder="Email"
-                                    required={true}
-                                    disableUnderline={true}
-                                    value={inputs.email}
-                                    onChange={handleChange}
-                                    sx={{
-                                        borderRadius: 2,
-                                        margin: '15px',
-                                        height: '50px'
-                                    }}
-                                    className='register-input' />
+                <Grid container spacing={2} justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
 
-                                <br />
 
-                                <Input
-                                    type='password'
-                                    placeholder="Password"
-                                    required={true}
-                                    disableUnderline={true}
-                                    value={inputs.password}
-                                    onChange={handleChange}
-                                    sx={{
-                                        borderRadius: 2,
-                                        margin: '15px',
-                                        height: '50px'
-                                    }}
-                                    className='register-input' />
+                    <Grid item xs={10}>
+                    <Typography sx={{color:'white', textAlign:'center'}} className='register-title'  gutterBottom>
+                        CREATE NEW ACCOUNT
+                    </Typography>
 
-                                <br />
-
-                                <Button
-                                    type='submit'
-                                    onClick={handleSubmit}
-                                    sx={{
-                                        backgroundColor: '#21206C',
-                                        margin: "15px",
-                                        borderRadius: '4px',
-                                        width: '103px',
-                                        height: '50px',
-                                    }} >
-                                    REGISTER
-                                </Button>
-                            </FormControl>
-
-                        </form>
+                    <Typography sx={{color:'white' , textAlign:'center'}}  gutterBottom>
+                    Already a Member.  LOG IN
+                    </Typography>
+                    
                     </Grid>
+
+                    <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-register'  justifyItems={'center'} >
+
+                    <div className='input-div-register'>
+                    <FormControl fullWidth > 
+                        <Input
+                        disableUnderline={true}
+                        fullWidth
+                        type='text'
+                        placeholder="Username"
+                        required={true}
+                        // value={email}
+                        className='register-input'
+                        // onChange={handleEmail}
+                        startAdornment={
+                        <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
+                            <PersonIcon/>
+                        </InputAdornment>
+                    }
+                    />
+                    </FormControl>
+                    </div>
+
+
+                    </Grid>
+
+
+
+
+
+
+
+
+
+    
+
+                    <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-register'  justifyItems={'center'} >
+
+                        <div className='input-div-register'>
+                        <FormControl fullWidth > 
+                            <Input
+                            disableUnderline={true}
+                            fullWidth
+                            type='email'
+                            placeholder="Email"
+                            required={true}
+                            // value={email}
+                            className='register-input'
+                            // onChange={handleEmail}
+                            startAdornment={
+                            <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
+                                <EmailIcon/>
+                            </InputAdornment>
+                        }
+                        />
+                        </FormControl>
+                        </div>
+                        
+
+                        </Grid>
+
+                        <Grid item  xs={11} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} justifyItems={'center'}>
+                        
+
+                        <div className='input-div-register'>
+                        <FormControl fullWidth> 
+                            <Input
+                            disableUnderline={true}
+                            fullWidth
+                            type='password'
+                            placeholder="Password"
+                            required={true}
+                            // value={email}
+                            className='register-input'
+                            // onChange={handleEmail}
+                            startAdornment={
+                                <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
+                                <HttpsIcon/>
+                             </InputAdornment>
+                        }
+                        />
+                        </FormControl>
+                        </div>
+
+                        </Grid>
+
+
+
+
+                        <Grid item xs={12} sm={7} md={6} lg={6} xl={12} justifyContent={'center'}>
+
+                            <div style={{display:'flex', justifyContent:'center', width:'100%'}}>
+                         <Button size="medium" type='submit' className='btn-login-card' fullWidth sx={{width:'50%'}}>REGISTER HERE</Button>
+                            </div>
+
+
+
+                        </Grid>
+
+
                 </Grid>
-
-
-
-            </Grid>
-
-
-
-        </div>
+            </div>
+        
+        
+        
+        
+        </>
     )
 }
 
