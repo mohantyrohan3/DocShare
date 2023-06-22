@@ -14,8 +14,7 @@ import {motion} from "framer-motion"
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
-
-
+import {registerApi} from "../../api/registerapi"
 
 
 
@@ -45,9 +44,8 @@ const Register = () => {
 
 
     //input change functions
-
-
-    const handleSubmit = (e) => {
+  
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const data = {
             email:email,
@@ -55,14 +53,21 @@ const Register = () => {
             password:password
         }
 
-        handleClick()
+        try{
+            const response  = await registerApi(data)
+            handleClick()
+            setTimeout(()=>{
+                navigate('/login')
+            },2000)
+        }
+
+        catch(err){
+            
+        }
+
         setemail("")
         setpassword("")
         setusername("")
-        console.log(data)
-        setTimeout(()=>{
-            navigate('/login')
-        },2000)
     }
     return (
         <> 
