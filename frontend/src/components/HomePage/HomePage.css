@@ -62,6 +62,9 @@
     .card-title{
         font-size: 1.6rem !important;
     }
+    .homepage-btn{
+        width: 50% !important;
+    }
 }
 
 
@@ -92,5 +95,15 @@
     .card-title{
         font-size: 1.2rem !important;
     }
+
+    .homepage-btn{
+        width: 50% !important;
+    }
   }
   
+
+  @media only screen and (max-width: 230px){
+    .homepage-btn{
+        width: 60% !important;
+    }
+}
