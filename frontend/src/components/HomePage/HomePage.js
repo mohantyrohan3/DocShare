@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import HomeFooter from '../HomeFooter/HomeFooter';
 import { Col, Row } from 'antd';
-
+import { TypeAnimation } from 'react-type-animation';
 
 
 
@@ -31,7 +31,23 @@ export default function HomePage() {
                                     SHARE DOCS SECURELY
                                     </Typography>
                                     <Typography className='homepage-grid-card-content card-title' gutterBottom  component="div">
-                                    WITH FAMILY
+                                    <TypeAnimation
+                                            preRenderFirstString={true}
+                                            sequence={[
+                                            500,
+                                            'WITH FRIENDS',
+                                            1000,
+                                            'WITH PARENTS',
+                                            1000,
+                                            'WITH RELATIVES',
+                                            1000,
+                                            'WITH COLLEAGUES',
+                                            500,
+                                            ]}
+                                            speed={50}
+                                            // style={{ fontSize: '2rem' }}
+                                            repeat={Infinity}
+                                        />
                                     </Typography>
                                     <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content' variant="body2" color="text.secondary">
                                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quisquam. Nisi eum, consectetur inventore minus fugiat velit rem accusamus quos. Quae alias accusamus, architecto quidem tempore vero atque quibusdam perspiciatis.
