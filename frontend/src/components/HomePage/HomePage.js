@@ -1,6 +1,5 @@
 import React from 'react'
 import "./HomePage.css"
-import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
 import animationData from "../../assets/8558-floating-document.json"
 import Lottie from "lottie-react";
@@ -23,15 +22,15 @@ export default function HomePage() {
         <Container className='homepage-grid' maxWidth="false">
             <Row  justify={'space-around'}> 
 
-                    <Col  xs={24} sm={24} md={8} lg={8} xl={8}>
+                    <Col  xs={24} sm={24} md={10} lg={8} xl={8}>
                         
                         <div className='homepage-grid-div'>
-                            <Card className='homepage-grid-card'>
+                            <Card className='homepage-grid-card' sx={{marginTop:'4rem'}}>
                                 <CardContent>
-                                    <Typography className='homepage-grid-card-content' gutterBottom variant="h4" component="div">
+                                    <Typography className='homepage-grid-card-content card-title' gutterBottom  component="div">
                                     SHARE DOCS SECURELY
                                     </Typography>
-                                    <Typography className='homepage-grid-card-content' gutterBottom variant="h4" component="div">
+                                    <Typography className='homepage-grid-card-content card-title' gutterBottom  component="div">
                                     WITH FAMILY
                                     </Typography>
                                     <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content' variant="body2" color="text.secondary">
