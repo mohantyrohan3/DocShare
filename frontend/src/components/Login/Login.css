@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+
+.login-body{
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, #021C1D 0%, #0191D8 100%);
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow:  hidden;
+    color: white;
+    font-family: 'Gamja Flower', cursive;
+    
+}
+
+.login-input{
+    border-radius: 4px;
+    background-color: #3D5152;
+    width: 400px;
+}
