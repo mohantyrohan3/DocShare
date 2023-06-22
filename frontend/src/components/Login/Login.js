@@ -1,104 +1,155 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Button, Link, FormControl, Input } from '@mui/material'
 import './Login.css'
+import Navbar from '../Navbar/Navbar';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/Input';
+import InputAdornment from '@mui/material/InputAdornment';
+import EmailIcon from '@mui/icons-material/Email';
+import HttpsIcon from '@mui/icons-material/Https';
+import PersonIcon from '@mui/icons-material/Person';
+import Button from '@mui/material/Button';
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Login = () => {
-  const [inputs, setInputs] = useState({
-    email: '',
-    password: '',
-  })
-  //input change functions
-  const handleChange = (e) => {
-    setInputs(prevState => (
-      {
-        ...prevState,
-        [e.target.name]: e.target.value
-      }
-    ))
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(inputs)
-  }
-  return (
-    <div className='login-body'>
-      <Grid justifyItems="center" alignItems="center" sx={{ textAlign: 'center' }} >
-        <Typography variant="h4">
-          HEY, WELCOME BACK
-        </Typography>
-        <Typography variant="h6">
-          DON'T HAVE AN ACCOUNT , <Link href="#" color="inherit" underline="none">SIGN IN</Link>
-        </Typography>
-
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-          sx={{ minHeight: '100vh' }}
-        >
-          <Grid item xs={3}>
-            <form>
-
-              <FormControl fullWidth error >
+    const [inputs, setInputs] = useState({
+        name: '',
+        email: '',
+        password: '',
+    })
 
 
-                <Input
-                  type='email'
-                  placeholder="Email"
-                  required={true}
-                  value={inputs.email}
-                  disableUnderline={true}
-                  onChange={handleChange}
-                  sx={{
-                    borderRadius: 2,
-                    margin: '15px'
-                  }}
-                  className='login-input' />
+    //input change functions
+    const handleChange = (e) => {
+        setInputs(prevState => (
+            {
+                ...prevState,
+                [e.target.name]: e.target.value
+            }
+        ))
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(inputs)
+    }
+    return (
+        <> 
+
+            <div className='login-body'>
+                <Navbar/>
 
                 <br />
-
-                <Input
-                  type='password'
-                  placeholder="Password"
-                  required={true}
-                  disableUnderline={true}
-                  value={inputs.password}
-                  onChange={handleChange}
-                  sx={{
-                    borderRadius: 2,
-                    margin: '15px'
-                  }}
-                  className='login-input' />
-
                 <br />
 
-                <Button
-                  type='submit'
-                  sx={{
-                    backgroundColor: '#21206C',
-                    margin: "15px",
-                    borderRadius: '4px',
-                    width: '103px',
-                    height: '50px',
-                  }} >
-                  LOGIN
-                </Button>
-              </FormControl>
 
-            </form>
-          </Grid>
-        </Grid>
+                <Grid container spacing={2} justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
+
+
+                    <Grid item xs={10}>
+                    <Typography sx={{color:'white', textAlign:'center'}} className='login-title'  gutterBottom>
+                          HEY , WELCOME BACK
+                    </Typography>
+
+                    <Typography sx={{color:'white' , textAlign:'center'}}  gutterBottom>
+                    DON'T HAVE AN ACCOUNT ,  SIGN IN
+                    </Typography>
+                    
+                    </Grid>
 
 
 
-      </Grid>
 
 
 
-    </div>
-  )
+
+
+
+    
+
+                    <Grid item  xs={12} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} className='grid-input-login'  justifyItems={'center'} >
+
+                        <div className='input-div-login'>
+                        <FormControl fullWidth > 
+                            <Input
+                            disableUnderline={true}
+                            fullWidth
+                            type='email'
+                            placeholder="Email"
+                            required={true}
+                            // value={email}
+                            className='login-input'
+                            // onChange={handleEmail}
+                            startAdornment={
+                            <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
+                                <EmailIcon/>
+                            </InputAdornment>
+                        }
+                        />
+                        </FormControl>
+                        </div>
+                        
+
+                        </Grid>
+
+                        <Grid item  xs={11} sm={9} md={6} lg={6} xl={4} sx={{marginTop:'2rem'}} justifyItems={'center'}>
+                        
+
+                        <div className='input-div-login'>
+                        <FormControl fullWidth> 
+                            <Input
+                            disableUnderline={true}
+                            fullWidth
+                            type='password'
+                            placeholder="Password"
+                            required={true}
+                            // value={email}
+                            className='login-input'
+                            // onChange={handleEmail}
+                            startAdornment={
+                                <InputAdornment position="start" sx={{marginLeft:'0.5rem'}}>
+                                <HttpsIcon/>
+                             </InputAdornment>
+                        }
+                        />
+                        </FormControl>
+                        </div>
+
+                        </Grid>
+
+
+
+
+                        <Grid item xs={12} sm={7} md={6} lg={6} xl={12} justifyContent={'center'}>
+
+                            <div style={{display:'flex', justifyContent:'center', width:'100%'}}>
+                         <Button size="medium" type='submit' className='btn-login-card' fullWidth sx={{width:'50%'}}>LOGIN</Button>
+                            </div>
+
+
+
+                        </Grid>
+
+
+                </Grid>
+            </div>
+        
+        
+        
+        
+        </>
+    )
 }
 
 export default Login

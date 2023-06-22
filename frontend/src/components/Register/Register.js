@@ -63,7 +63,7 @@ const Register = () => {
                     </Typography>
 
                     <Typography sx={{color:'white' , textAlign:'center'}}  gutterBottom>
-                    Already a Member.  LOG IN
+                    Already a Member , LOG IN
                     </Typography>
                     
                     </Grid>
