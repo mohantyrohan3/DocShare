@@ -4,6 +4,8 @@ import HomePage from '../components/HomePage/HomePage'
 import Loading from "../components/Loading/Loading"
 
 
+
+
 export default function Home() {
 
   const [loading, setLoading] = useState(true);
@@ -28,11 +30,11 @@ useEffect(() => {
             loading?(
                 <Loading/>
             ):
-            (   
-                <>
-                <Navbar />
-                <HomePage/>
-                </>
+            (     
+              <>
+                  <Navbar />
+                 <HomePage/>
+              </>
             )
         }
         

@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import HomeFooter from '../HomeFooter/HomeFooter';
 import { Col, Row } from 'antd';
 import { TypeAnimation } from 'react-type-animation';
-
+import {motion} from "framer-motion"
 
 
 export default function HomePage() {
@@ -25,7 +25,11 @@ export default function HomePage() {
 
                     <Col  xs={24} sm={24} md={10} lg={8} xl={8}>
                         
-                        <div className='homepage-grid-div'>
+                        <motion.div className='homepage-grid-div'
+                            initial={{y:100,opacity:0}}
+                            animate={{y:0,opacity:1}}
+                            transition={{duration:0.75}}
+                        >
                             <Card className='homepage-grid-card' sx={{marginTop:'4rem'}}>
                                 <CardContent>
                                     <Typography className='homepage-grid-card-content card-title' gutterBottom  component="div">
@@ -58,12 +62,16 @@ export default function HomePage() {
                                     <Button disableFocusRipple  className='homepage-btn' size="medium">GET STARTED</Button>
                                 </CardActions>
                                 </Card>  
-                        </div>
+                        </motion.div>
                     </Col>
                     <Col xs={0} sm={0} md={10} lg={12} xl={12}>
-                        <div className='homepage-grid-div'>
+                        <motion.div 
+                        initial={{y:100,opacity:0}}
+                        animate={{y:0,opacity:1}}
+                        transition={{duration:0.75}}
+                        className='homepage-grid-div'>
                         <Lottie  animationData={animationData} loop={true} />
-                        </div>
+                        </motion.div>
                     </Col>
 
 
