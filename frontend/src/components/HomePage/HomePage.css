@@ -67,6 +67,19 @@
     }
 }
 
+@media only screen and (max-width: 760px){
+  .btn-div{
+    justify-content:center !important;
+  }
+  .homepage-grid-card-content{
+    text-align: center !important;
+  }
+  .content-desc{
+    text-align: center !important;
+    word-spacing: 5px;
+  }
+}
+
 
 @media only screen and (max-width: 400px){
     .card-title{

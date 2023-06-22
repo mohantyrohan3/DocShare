@@ -54,11 +54,11 @@ export default function HomePage() {
                                             repeat={Infinity}
                                         />
                                     </Typography>
-                                    <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content' variant="body2" color="text.secondary">
+                                    <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content content-desc' variant="body2" color="text.secondary">
                                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quisquam. Nisi eum, consectetur inventore minus fugiat velit rem accusamus quos. Quae alias accusamus, architecto quidem tempore vero atque quibusdam perspiciatis.
                                     </Typography>
                                 </CardContent>
-                                <CardActions>
+                                <CardActions sx={{display:'flex'}} className='btn-div'>
                                     <Button disableFocusRipple  className='homepage-btn' size="medium">GET STARTED</Button>
                                 </CardActions>
                                 </Card>  
@@ -70,7 +70,7 @@ export default function HomePage() {
                         animate={{y:0,opacity:1}}
                         transition={{duration:0.75}}
                         className='homepage-grid-div'>
-                        <Lottie  animationData={animationData} loop={true} />
+                        <Lottie  animationData={animationData} loop={false} />
                         </motion.div>
                     </Col>
 
