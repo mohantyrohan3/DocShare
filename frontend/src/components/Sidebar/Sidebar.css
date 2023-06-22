@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 
 .sidebar {
     height: 100vh;
@@ -35,6 +36,6 @@
 
   .sidebar-content{
     font-size: 2rem !important;
-    /* font-family: 'Gamja Flower', cursive !important; */
+    font-family: 'Montserrat', sans-serif !important;
     margin-bottom: 4rem !important;
   }
