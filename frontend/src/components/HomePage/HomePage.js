@@ -15,9 +15,10 @@ import { TypeAnimation } from 'react-type-animation';
 
 
 export default function HomePage() {
+
   return (
     <div className='homepage-body'>
-        
+
 
         <Container className='homepage-grid' maxWidth="false">
             <Row  justify={'space-around'}> 
