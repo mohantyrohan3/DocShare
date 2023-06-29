@@ -6,15 +6,66 @@
 }
 
 .dash-body {
-    margin: 0;
-    top: 0;
-    left: 0;
     background: linear-gradient(243.18deg, #021C1D 0%, #132B2B 100%);
+    height: 100vh;
     box-sizing: border-box;
     overflow: auto;
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    position: absolute;
 }
 
+.dashboard-btn{
+    background: #E1FFFF !important;
+    border-radius: 12px !important;
+    color: black !important;
+    font-family: 'Gamja Flower', cursive !important;
+    margin-top: 2rem !important;
+    font-size: 1.3rem !important;
+}
+.dashboard-btn-modal{
+    background: #E1FFFF !important;
+    border-radius: 12px !important;
+    color: black !important;
+    font-family: 'Gamja Flower', cursive !important;
+    font-size: 1.3rem !important;
+}
+
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    background: #163F40;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+
+.modal-text{
+    color:white !important;
+}
+
+
+.dashboard-input{
+    border-radius: 10px !important;
+    background: #26655A !important;
+    color: white !important;
+    margin-top: 1rem !important;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 500px) {
+    .modal{
+        width: 70%;
+    }
+  }
+
+  @media only screen and (max-width: 300px) {
+    .modal{
+        width: 80%;
+    }
+  }

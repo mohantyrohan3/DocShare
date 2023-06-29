@@ -1,117 +1,106 @@
 import React, { useState } from 'react'
 import { Card, CardActions, CardContent, Button, Typography, Grid, Box, Modal, Input, FormControl } from '@mui/material'
 import './UserHome.css'
+import Navbar from "../../Navbar/Navbar"
+import { UploadOutlined } from '@ant-design/icons';
+import {Upload } from 'antd';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+
 
 const UserHome = () => {
-    const [open, setOpen] = useState(false)
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        backgroundColor: '#5a7e73',
-        border: '2px solid #000',
-        boxShadow: 24,
-        pt: 2,
-        px: 4,
-        pb: 3,
-    };
     const [fname, setfname] = useState("");
-    const [fdes, setfdes] = useState("");
+    const [file, setfile] = useState(null);
+    const [modal, setmodal] = useState(false);
+    const handleClose = () => setmodal(false);
+
+    const handlesubmit = (e)=>{
+        e.preventDefault();
+        const data = {
+            filename:fname,
+            file
+        }
+
+
+        setfile(null);
+        setfname('')
+        setmodal(false)
+
+        console.log(data)
+    }
+
+
+
+
+
+
+
+
+    
     return (
         <>
-            <div className='dash-body'>
-                <Grid container justifyContent="center" alignItems="center">
-                    <Grid item xs={12} sm={9} md={6} lg={6} xl={4}>
-                        <Button
-                            sx={{ fontSize: "30px", color: 'white', backgroundColor: '#5a7e73', borderRadius: '30px', marginTop: '40px' }}
-                            className='rectangle'
-                            onClick={() => {
-                                setOpen(true)
-                            }}>
-                            Upload A File
-                        </Button>
-                        <Modal open={open} onClose={() => {
-                            setOpen(false)
-                        }}>
-                            <Box sx={style}>
-                                <FormControl fullWidth >
-                                    <Input
-                                        disableUnderline={true}
-                                        fullWidth
-                                        type='text'
-                                        placeholder="File Name"
-                                        required={true}
-                                        value={fname}
-                                        onChange={(e) => setfname(e.target.value)}
-                                        sx={{
-                                            margin: '10px',
-                                            backgroundColor: '#a0dede',
-                                            borderRadius:'5px',
-                                        }}
+          <div className='dash-body'>
+            <Navbar/>
 
-                                    />
-                                    <br></br>
-                                    <Input
-                                        disableUnderline={true}
-                                        fullWidth
-                                        type='text'
-                                        placeholder="File Description"
-                                        required={true}
-                                        value={fdes}
-                                        onChange={(e) => setfdes(e.target.value)}
-                                        sx={{
-                                            margin: '10px',
-                                            backgroundColor: '#a0dede',
-                                            borderRadius:'5px',
-                                        }}
+            <Grid container justifyContent="center" alignItems="center">
+                <Grid item xs={10} sm={9} md={4} lg={4} xl={3}>
+            
+                <Button onClick={() => setmodal(true)}  disableFocusRipple fullWidth  className='dashboard-btn' size="medium">UPLOAD A FILE</Button>
 
-                                    />
-                                </FormControl>
-                                <Button variant='contained'
-                                    sx={{ margin: '10px' }}
-                                >
-                                    Click to Upload
-                                </Button>
-                                <Button variant='contained' onClick={() => {
-                                    setOpen(false)
-                                }}>
-                                    Cancel
-                                </Button>
+
+                    <Modal
+                    open={modal}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    >
+                    <Box className='modal'>
+                    <Typography className='modal-text' sx={{marginBottom:'1rem'}} variant="h6" component="h2">
+                            UPLOAD FILE
+                    </Typography>     
+
+                            <form onSubmit={handlesubmit}>
+                              
+                            
+                            <FormControl fullWidth> 
+                                     <Input
+                                     disableUnderline={true}
+                                     type='text'
+                                     placeholder="FILE NAME"
+                                     required={true}
+                                     value={fname}
+                                     className='dashboard-input'
+                                     onChange={(e)=> setfname(e.target.value)}
+                                    sx={{padding:'1rem'}}
+                                 />
+                            </FormControl>
+
+                            <FormControl fullWidth>
+
+                            <Upload.Dragger
+                            beforeUpload={(file)=>{
+                                return false
+                            }}
+                            onChange={(e)=> setfile(e.file)}
+                            listType='picture-card' maxCount={1} style={{marginTop:'1rem'}}>
+                                <Button style={{margin:0}} startIcon={< FileUploadIcon/>} className='dashboard-btn-modal'>Click to Upload</Button>
+                            </Upload.Dragger>
+                            {/* <input type="file" onChange={(e)=> setfile(e.target.files[0])} /> */}
+
+
+
+                            </FormControl>
+                            <Button size="medium" fullWidth className='dashboard-btn' type='submit'>UPLOAD</Button>
+                          
+                            </form>
 
                             </Box>
-
-
                         </Modal>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={9} md={6} lg={6} xl={4}>
-                        <Card sx={{ backgroundColor: '#256559', margin: '40px', maxWidth: 345 }} className='dash-card'>
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'white' }}>
-                                    File Name
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary" sx={{ color: 'white' }}>
-                                    File Description
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="medium" sx={{ backgroundColor: '#256559', }}>
-                                    Share
-                                </Button>
-                                <Button size="medium" sx={{ backgroundColor: '#ee0000' }}>
-                                    Delete
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </div>
+                            </Grid>
+                        </Grid>
 
 
+
+           </div>
         </>
 
     )
