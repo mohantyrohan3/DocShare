@@ -5,6 +5,8 @@ import Navbar from "../../Navbar/Navbar"
 import { UploadOutlined } from '@ant-design/icons';
 import {Upload } from 'antd';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import {fileuploadApi} from "../../../api/fileuploadapi"
+
 
 
 const UserHome = () => {
@@ -13,18 +15,30 @@ const UserHome = () => {
     const [modal, setmodal] = useState(false);
     const handleClose = () => setmodal(false);
 
-    const handlesubmit = (e)=>{
+    const handlesubmit = async (e)=>{
         e.preventDefault();
         const data = {
             filename:fname,
-            file
+            file:file
         }
 
+        const formData = new FormData();
+        // formData.append('filename',fname)
+        formData.append('file', file);
 
+        try{
+            const response = await fileuploadApi(data)
+            console.log(response)
+        }
+
+        catch(err){
+            console.log(err)
+        }
+
+        
         setfile(null);
         setfname('')
         setmodal(false)
-
         console.log(data)
     }
 
@@ -58,7 +72,7 @@ const UserHome = () => {
                             UPLOAD FILE
                     </Typography>     
 
-                            <form onSubmit={handlesubmit}>
+                            <form onSubmit={handlesubmit} method='post' encType="multipart/form-data">
                               
                             
                             <FormControl fullWidth> 
@@ -75,7 +89,7 @@ const UserHome = () => {
                             </FormControl>
 
                             <FormControl fullWidth>
-
+{/* 
                             <Upload.Dragger
                             beforeUpload={(file)=>{
                                 return false
@@ -83,8 +97,8 @@ const UserHome = () => {
                             onChange={(e)=> setfile(e.file)}
                             listType='picture-card' maxCount={1} style={{marginTop:'1rem'}}>
                                 <Button style={{margin:0}} startIcon={< FileUploadIcon/>} className='dashboard-btn-modal'>Click to Upload</Button>
-                            </Upload.Dragger>
-                            {/* <input type="file" onChange={(e)=> setfile(e.target.files[0])} /> */}
+                            </Upload.Dragger> */}
+                            <input type="file" onChange={(e)=> setfile(e.target.files[0])} />
 
 
 

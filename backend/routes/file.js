@@ -18,7 +18,7 @@ router.get('/',(req,res)=>{
 
 
 // File Upload Route
-router.post("/upload", upload.single(), async (req, res) => {
+router.post("/upload", upload.single('file'), async (req, res) => {
 
     if(req.isAuthenticated()){
         try {
