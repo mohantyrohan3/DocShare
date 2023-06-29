@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { Card, CardActions, CardContent, Button, Typography, Grid, Box, Modal, Input, FormControl } from '@mui/material'
+import { Card, CardActions, CardContent, Button, Typography, Grid, Box, Modal, Input, FormControl, Container } from '@mui/material'
 import './UserHome.css'
 import Navbar from "../../Navbar/Navbar"
 import { UploadOutlined } from '@ant-design/icons';
 import {Upload } from 'antd';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import {fileuploadApi} from "../../../api/fileuploadapi"
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import ShareIcon from '@mui/icons-material/Share';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 
 const UserHome = () => {
@@ -17,14 +19,17 @@ const UserHome = () => {
 
     const handlesubmit = async (e)=>{
         e.preventDefault();
+
+        if(!file){
+            console.log('No file')
+            return;
+        }
+
+
         const data = {
             filename:fname,
             file:file
         }
-
-        const formData = new FormData();
-        // formData.append('filename',fname)
-        formData.append('file', file);
 
         try{
             const response = await fileuploadApi(data)
@@ -89,7 +94,7 @@ const UserHome = () => {
                             </FormControl>
 
                             <FormControl fullWidth>
-{/* 
+                            
                             <Upload.Dragger
                             beforeUpload={(file)=>{
                                 return false
@@ -97,12 +102,9 @@ const UserHome = () => {
                             onChange={(e)=> setfile(e.file)}
                             listType='picture-card' maxCount={1} style={{marginTop:'1rem'}}>
                                 <Button style={{margin:0}} startIcon={< FileUploadIcon/>} className='dashboard-btn-modal'>Click to Upload</Button>
-                            </Upload.Dragger> */}
-                            <input type="file" onChange={(e)=> setfile(e.target.files[0])} />
-
-
-
+                            </Upload.Dragger>
                             </FormControl>
+
                             <Button size="medium" fullWidth className='dashboard-btn' type='submit'>UPLOAD</Button>
                           
                             </form>
@@ -111,6 +113,51 @@ const UserHome = () => {
                         </Modal>
                             </Grid>
                         </Grid>
+
+
+
+                        <Container style={{marginTop:'1rem'}}>
+                        <Grid container spacing={2}>
+                        <Grid item xs={12} sm={9} md={6} lg={6} xl={4}>
+                            <Card  className='dash-card'>
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'white' , textAlign:'center' }}>
+                                        File Name
+                                    </Typography>
+
+                                </CardContent>
+                                <CardActions>
+
+                                    <div style={{width:'100%' , display:'flex' , justifyContent:'space-evenly' , marginBottom:'1rem'}} >
+                                    <Button size="medium"  className='dashboard-btn-card' startIcon={<RemoveRedEyeIcon/>}></Button>
+
+                                    <Button size="medium" className='dashboard-btn-card'  startIcon={<ShareIcon/>}>
+                                        
+                                    </Button>
+                                    <Button size="medium" className='dashboard-btn-card' startIcon={<DeleteIcon/>}>
+                                        
+                                    </Button>
+                                    </div>
+
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    </Grid>
+                    </Container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

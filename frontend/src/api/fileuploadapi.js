@@ -4,9 +4,9 @@ export const fileuploadApi = async (inputData) => {
   try {
     const options = {
         method: 'POST',
-        url: 'http://localhost:8001/api/file/upload',
+        url: 'https://docshare.rohankm.online/api/file/upload',
         headers: {
-          'content-type': 'multipart/form-data',
+          'content-type':'multipart/form-data',
         },
         withCredentials: true,
         data:inputData

@@ -1,9 +1,4 @@
-.rectangle {
 
-    box-shadow: 0px 0px 4px 4px #00000040;
-    height: 58px;
-    width: 449px;
-}
 
 .dash-body {
     background: linear-gradient(243.18deg, #021C1D 0%, #132B2B 100%);
@@ -26,6 +21,16 @@
     color: black !important;
     font-family: 'Gamja Flower', cursive !important;
     font-size: 1.3rem !important;
+}
+
+
+.dashboard-btn-card{
+    background: #E1FFFF !important;
+    border-radius: 12px !important;
+    color: black !important;
+    font-family: 'Gamja Flower', cursive !important;
+    margin-top: 2rem !important;
+    font-size: 1.5rem !important;
 }
 
 
@@ -54,6 +59,12 @@
 }
 
 
+.dash-card{
+    background: #163F40 !important;
+    border-radius: 10px !important;
+}
+
+
 
 
 
@@ -64,8 +75,19 @@
     }
   }
 
+
+  @media only screen and (max-width: 400px) {
+    .dashboard-btn-card{
+        font-size: 0.8rem !important;
+    }
+  }
+
   @media only screen and (max-width: 300px) {
     .modal{
         width: 80%;
+    }
+
+    .dashboard-btn-card{
+        font-size: 0.6rem !important;
     }
   }
