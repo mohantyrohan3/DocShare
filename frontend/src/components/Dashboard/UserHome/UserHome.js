@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { Card, CardActions, CardContent, Button, Typography, Grid, Box, Modal, Input, FormControl, Container } from '@mui/material'
+import React, { useState , useEffect } from 'react'
+import { Button, Typography, Grid, Box, Modal, Input, FormControl, Container } from '@mui/material'
 import './UserHome.css'
 import Navbar from "../../Navbar/Navbar"
-import { UploadOutlined } from '@ant-design/icons';
 import {Upload } from 'antd';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import {fileuploadApi} from "../../../api/fileuploadapi"
-import DeleteIcon from '@mui/icons-material/Delete';
-import ShareIcon from '@mui/icons-material/Share';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import axios from 'axios';
+import UserHomeCard from './UserHomeCard';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 
 const UserHome = () => {
@@ -16,24 +18,41 @@ const UserHome = () => {
     const [file, setfile] = useState(null);
     const [modal, setmodal] = useState(false);
     const handleClose = () => setmodal(false);
+    const [list, setlist] = useState([]);
+    const [load, setload] = useState(true);
+    const [open, setOpen] = useState(false);
+
+    const handleCloseBar = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+
+        setOpen(false);
+    };
+
+
+
+
+
 
     const handlesubmit = async (e)=>{
         e.preventDefault();
-
+        
         if(!file){
             console.log('No file')
             return;
         }
-
-
+        setmodal(false);
+        setload(true);
         const data = {
             filename:fname,
             file:file
         }
 
         try{
-            const response = await fileuploadApi(data)
-            console.log(response)
+            const response = await fileuploadApi(data);
+            setOpen(true)
+            get_files()
         }
 
         catch(err){
@@ -43,22 +62,60 @@ const UserHome = () => {
         
         setfile(null);
         setfname('')
-        setmodal(false)
         console.log(data)
     }
 
 
-
-
-
-
-
-
+    const get_files = async ()=>{
+        setload(true)
+        try{
+          const response = await axios.get('https://docshare.rohankm.online/api/file/get_files',{
+            withCredentials:true
+          })
+          console.log(response)
+          let temp = response.data.files.map((data)=>{
+            return(
+              <UserHomeCard data = {data}  getFile = {get_files}/>
+            )
+          })
+          setlist(temp)
+          setload(false)
+        }
     
+        catch(err){
+          console.log(err)
+        }
+    
+        setload(false)
+      }
+    
+
+
+    useEffect(() => {
+        get_files();
+      }, []);
+
+
+
     return (
         <>
           <div className='dash-body'>
             <Navbar/>
+
+            <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={load}
+            >
+            <CircularProgress color="inherit" />
+            </Backdrop>
+
+            <Snackbar vertical= 'top'
+            horizontal= 'right' open={open} autoHideDuration={3000} onClose={handleCloseBar}>
+                <Alert onClose={handleCloseBar} severity="success" sx={{ width: '100%' , background:'#388e3c' ,color:'white'}}>
+                Successfully Uploaded
+                </Alert>
+            </Snackbar>
+
 
             <Grid container justifyContent="center" alignItems="center">
                 <Grid item xs={10} sm={9} md={4} lg={4} xl={3}>
@@ -107,59 +164,20 @@ const UserHome = () => {
 
                             <Button size="medium" fullWidth className='dashboard-btn' type='submit'>UPLOAD</Button>
                           
-                            </form>
+                                    </form>
 
-                            </Box>
-                        </Modal>
-                            </Grid>
+                                </Box>
+                                </Modal>
+                                </Grid>
                         </Grid>
-
-
 
                         <Container style={{marginTop:'1rem'}}>
-                        <Grid container spacing={2}>
-                        <Grid item xs={12} sm={9} md={6} lg={6} xl={4}>
-                            <Card  className='dash-card'>
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'white' , textAlign:'center' }}>
-                                        File Name
-                                    </Typography>
+                        <Grid  container spacing={2} justifyContent="center">
+                            {list}
 
-                                </CardContent>
-                                <CardActions>
-
-                                    <div style={{width:'100%' , display:'flex' , justifyContent:'space-evenly' , marginBottom:'1rem'}} >
-                                    <Button size="medium"  className='dashboard-btn-card' startIcon={<RemoveRedEyeIcon/>}></Button>
-
-                                    <Button size="medium" className='dashboard-btn-card'  startIcon={<ShareIcon/>}>
-                                        
-                                    </Button>
-                                    <Button size="medium" className='dashboard-btn-card' startIcon={<DeleteIcon/>}>
-                                        
-                                    </Button>
-                                    </div>
-
-                                </CardActions>
-                            </Card>
                         </Grid>
-                    </Grid>
+                    
                     </Container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
            </div>
         </>
