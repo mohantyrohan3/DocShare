@@ -12,7 +12,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
-
 const UserHome = () => {
     const [fname, setfname] = useState("");
     const [file, setfile] = useState(null);
@@ -62,7 +61,6 @@ const UserHome = () => {
         
         setfile(null);
         setfname('')
-        console.log(data)
     }
 
 
@@ -72,7 +70,6 @@ const UserHome = () => {
           const response = await axios.get('https://docshare.rohankm.online/api/file/get_files',{
             withCredentials:true
           })
-          console.log(response)
           let temp = response.data.files.map((data)=>{
             return(
               <UserHomeCard data = {data}  getFile = {get_files}/>
@@ -174,7 +171,6 @@ const UserHome = () => {
                         <Container style={{marginTop:'1rem'}}>
                         <Grid  container spacing={2} justifyContent="center">
                             {list}
-
                         </Grid>
                     
                     </Container>

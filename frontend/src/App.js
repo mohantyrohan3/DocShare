@@ -11,6 +11,7 @@ import RegisterRoute from './routes/RegisterRoute';
 import LoginRoute from './routes/LoginRoute';
 import { checkauth } from './store/slices/userSlice';
 import { useSelector,useDispatch } from 'react-redux'
+import PreviewRoute from "./routes/PreviewRoute";
 
 
 
@@ -41,6 +42,7 @@ function App() {
               (user.status === "Authenticated")?(
                 <>
                   <Route exact path="/user/home" element={<DashboardHome/>} />
+                  <Route exact path="/user/preview/" element={<PreviewRoute/>} />
 
                 </>
               ):(

@@ -67,7 +67,7 @@ export default function HomePage() {
                                         />
                                     </Typography>
                                     <Typography sx={{marginTop:'1rem'}} className='homepage-grid-card-content content-desc' variant="body2" color="text.secondary">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quisquam. Nisi eum, consectetur inventore minus fugiat velit rem accusamus quos. Quae alias accusamus, architecto quidem tempore vero atque quibusdam perspiciatis.
+                                       Welcome to your own personal Documents store. Use it to store notes for your college , your personal documents , family files and so on. Quickly share your documents with your family and friends over whatsapp and telegram.
                                     </Typography>
                                 </CardContent>
                                 <CardActions sx={{display:'flex'}} className='btn-div'>
